@@ -113,9 +113,9 @@ module Cucumber
           ::FactoryGirl.create(fg_factory_name, attributes)
         elsif model_class.respond_to?(:make) # Machinist blueprint
           if variant.present?
-            model_class.make(variant.to_sym, attributes)
+            model_class.make!(variant.to_sym, attributes)
           else
-            model_class.make(attributes)
+            model_class.make!(attributes)
           end
         elsif model_class.respond_to?(:create!) # Plain ActiveRecord
           model = model_class.new
